@@ -6,8 +6,8 @@
     <title>UnGlitchable's Extensions</title>
     <style>
         :root {
-            --bg-color: #f8fafc; /* Main background */
-            --section-bg: #ffffff; /* Nav/Footer background for contrast */
+            --bg-color: #f8fafc;
+            --section-bg: #ffffff;
             --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -15,15 +15,12 @@
             --accent-hover: #4338ca;
             --border-color: #e2e8f0;
             --icon-bg: #e0e7ff;
-            
-            /* Status Badge Light Mode Colors */
             --status-update-bg: #fef3c7;
             --status-update-text: #d97706;
             --status-new-bg: #dcfce7;
             --status-new-text: #16a34a;
         }
 
-        /* Dark Mode Variables */
         body.dark-mode {
             --bg-color: #0b1120;
             --section-bg: #0f172a;
@@ -33,7 +30,6 @@
             --border-color: #334155;
             --icon-bg: #312e81;
 
-            /* Status Badge Dark Mode Colors */
             --status-update-bg: #78350f;
             --status-update-text: #fcd34d;
             --status-new-bg: #064e3b;
@@ -53,7 +49,6 @@
             min-height: 100vh;
         }
 
-        /* --- Top Navigation --- */
         nav {
             background-color: var(--section-bg);
             border-bottom: 1px solid var(--border-color);
@@ -83,15 +78,13 @@
             color: var(--accent);
         }
 
-        /* Logo/Icons inside the top navbar */
         .nav-logo {
-            height: 1.75rem; /* Sized perfectly to fit cleanly inside your navbar row */
+            height: 1.75rem;
             width: auto;
             display: block;
             object-fit: contain;
         }
 
-        /* --- Header & Animation --- */
         header {
             max-width: 1200px;
             margin: 0 auto;
@@ -111,7 +104,7 @@
             justify-content: center;
             gap: 0.75rem;
             flex-wrap: wrap;
-            line-height: 1; /* Eliminates hidden baseline drifting */
+            line-height: 1;
         }
 
         header h1 span {
@@ -147,7 +140,6 @@
             max-width: 600px;
         }
 
-        /* --- Main Content Grid --- */
         main {
             max-width: 1200px;
             width: 100%;
@@ -221,7 +213,6 @@
             margin: 0;
         }
 
-        /* Container to align version and status badge inline neatly */
         .version-row {
             display: flex;
             align-items: center;
@@ -239,7 +230,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* --- Micro Status Badges (UPDATED / NEW Labels) --- */
         .status-badge {
             display: inline-block;
             font-size: 0.75rem;
@@ -299,7 +289,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* --- Footer --- */
         footer {
             background-color: var(--section-bg);
             border-top: 1px solid var(--border-color);
@@ -439,20 +428,17 @@
     </footer>
 
     <script>
-        // --- Dark Mode Logic ---
         const themeToggle = document.getElementById('themeToggle');
         const navLogo = document.getElementById('navLogo');
         const changelogLogo = document.getElementById('changelogLogo');
         const body = document.body;
         
-        // Initial setup based on saved user preference
         if (localStorage.getItem('theme') === 'light') {
             body.classList.remove('dark-mode');
             themeToggle.innerText = '☀️';
             navLogo.src = 'wrench.png';
             changelogLogo.src = 'update.png';
         } else {
-            // Default dark mode setup
             body.classList.add('dark-mode');
             themeToggle.innerText = '🌙';
             navLogo.src = 'wrenchLight.png';
@@ -474,7 +460,6 @@
             }
         });
 
-        // --- Text Animation Logic ---
         const box = document.getElementById('animatedBox');
         const wordSpan = document.getElementById('wordSpan');
         const textArray = ["Random", "Fun", "Useful", "Easy To Use", "Flawless", "Quick"];
