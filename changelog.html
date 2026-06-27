@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Logs - UnGlitchable</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc; /* Main background */
+            --section-bg: #ffffff; /* Nav/Footer background for contrast */
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --border-color: #e2e8f0;
+            --icon-bg: #e0e7ff;
+        }
+
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --bg-color: #0b1120;
+            --section-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --icon-bg: #312e81;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Top Navigation --- */
+        nav {
+            background-color: var(--section-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        /* Logo/Icons inside the top navbar */
+        .nav-logo {
+            height: 1.75rem;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* --- Header --- */
+        header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 3rem 1.5rem;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin: 0.5rem auto 0 auto;
+        }
+
+        /* --- Main Content Timeline --- */
+        main {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem 1.5rem;
+            flex-grow: 1;
+            box-sizing: border-box;
+        }
+
+        .log-section {
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .log-section::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .log-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .log-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: var(--border-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .log-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .log-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .log-content h3 {
+            font-size: 1.05rem;
+            margin: 0 0 0.75rem 0;
+            color: var(--text-main);
+        }
+
+        .log-list {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .log-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .log-list li::marker {
+            color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--section-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .theme-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .yt-icon-btn {
+            color: #ef4444;
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yt-icon-btn:hover {
+            color: #dc2626;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">
+                <img src="wrenchLight.png" alt="Extensions" class="nav-logo" id="navLogo">
+            </a>
+            <a href="changelog.html" class="active">
+                <img src="updateLight.png" alt="Changelogs" class="nav-logo" id="changelogLogo">
+            </a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Update Logs</h1>
+        <p>Stay up to date with the latest features, improvements, and bug fixes.</p>
+    </header>
+
+    <main>
+        
+        <div class="log-section">
+            <div class="log-header">
+                <h2 class="log-title">Initial Release</h2>
+                <span class="badge">v1.0.0</span>
+                <span class="log-date">June 2026</span>
+            </div>
+            <div class="log-content">
+                <h3>🚀 What's New</h3>
+                <ul class="log-list">
+                    <li>Launched <strong>WhatEXPSAreOnline Quick Opener</strong> to cleanly catalog and open project links directly from a browser icon.</li>
+                    <li>Launched <strong>Discord Emoji Opener</strong> allowing users to preview and download server emojis instantly.</li>
+                    <li>Launched <strong>Discord Webhook Sender</strong> providing an easy user interface to test and dispatch webhook content.</li>
+                    <li>Fully open-sourced all extensions with clear public download paths.</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <button id="themeToggle" class="theme-btn" title="Toggle Theme">🌙</button>
+
+        <a href="https://www.youtube.com/@UnGlitchable" target="_blank" class="yt-icon-btn" title="UnGlitchable on YouTube">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+        </a>
+    </footer>
+
+    <script>
+        // --- Dark Mode Logic ---
+        const themeToggle = document.getElementById('themeToggle');
+        const navLogo = document.getElementById('navLogo');
+        const changelogLogo = document.getElementById('changelogLogo');
+        const body = document.body;
+        
+        // Initial setup based on saved user preference
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.remove('dark-mode');
+            themeToggle.innerText = '☀️';
+            navLogo.src = 'wrench.png';
+            changelogLogo.src = 'update.png';
+        } else {
+            // Default dark mode setup
+            body.classList.add('dark-mode');
+            themeToggle.innerText = '🌙';
+            navLogo.src = 'wrenchLight.png';
+            changelogLogo.src = 'updateLight.png';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerText = '🌙';
+                navLogo.src = 'wrenchLight.png';
+                changelogLogo.src = 'updateLight.png';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerText = '☀️';
+                navLogo.src = 'wrench.png';
+                changelogLogo.src = 'update.png';
+            }
+        });
+    </script>
+
+</body>
+</html>
