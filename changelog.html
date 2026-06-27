@@ -6,8 +6,8 @@
     <title>Update Logs - UnGlitchable</title>
     <style>
         :root {
-            --bg-color: #f8fafc; /* Main background */
-            --section-bg: #ffffff; /* Nav/Footer background for contrast */
+            --bg-color: #f8fafc;
+            --section-bg: #ffffff;
             --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -17,7 +17,6 @@
             --icon-bg: #e0e7ff;
         }
 
-        /* Dark Mode Variables */
         body.dark-mode {
             --bg-color: #0b1120;
             --section-bg: #0f172a;
@@ -41,7 +40,6 @@
             min-height: 100vh;
         }
 
-        /* --- Top Navigation --- */
         nav {
             background-color: var(--section-bg);
             border-bottom: 1px solid var(--border-color);
@@ -71,7 +69,6 @@
             color: var(--accent);
         }
 
-        /* Logo/Icons inside the top navbar */
         .nav-logo {
             height: 1.75rem;
             width: auto;
@@ -79,7 +76,6 @@
             object-fit: contain;
         }
 
-        /* --- Header --- */
         header {
             max-width: 800px;
             margin: 0 auto;
@@ -103,7 +99,6 @@
             margin: 0.5rem auto 0 auto;
         }
 
-        /* --- Main Content Timeline --- */
         main {
             max-width: 800px;
             width: 100%;
@@ -190,7 +185,6 @@
             color: var(--accent);
         }
 
-        /* --- Footer --- */
         footer {
             background-color: var(--section-bg);
             border-top: 1px solid var(--border-color);
@@ -285,20 +279,17 @@
     </footer>
 
     <script>
-        // --- Dark Mode Logic ---
         const themeToggle = document.getElementById('themeToggle');
         const navLogo = document.getElementById('navLogo');
         const changelogLogo = document.getElementById('changelogLogo');
         const body = document.body;
         
-        // Initial setup based on saved user preference
         if (localStorage.getItem('theme') === 'light') {
             body.classList.remove('dark-mode');
             themeToggle.innerText = '☀️';
             navLogo.src = 'wrench.png';
             changelogLogo.src = 'update.png';
         } else {
-            // Default dark mode setup
             body.classList.add('dark-mode');
             themeToggle.innerText = '🌙';
             navLogo.src = 'wrenchLight.png';
